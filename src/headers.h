@@ -41,6 +41,10 @@
 #include <iostream>
 #include <limits>
 #include <string>
+#include <fstream>
+#include <sstream>
+#include <iomanip>
+#include <map>
 
 #include <fcntl.h>
 #include <sys/stat.h>

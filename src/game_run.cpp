@@ -1051,7 +1051,7 @@ static void executeInputCommands(char &command, int &find_count) {
         if (game.command_count > 0) {
             game.use_last_direction = true;
         } else {
-            last_input_command = getKeyInput();
+            last_input_command = mapKeyInput(getKeyInput());
 
             // Get a count for a command.
             int repeat_count = 0;

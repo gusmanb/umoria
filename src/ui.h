@@ -72,6 +72,7 @@ void messageLineClear();
 void printMessage(const char *msg);
 void printMessageNoCommandInterrupt(const std::string &msg);
 char getKeyInput();
+char mapKeyInput(char key);
 bool getCommand(const std::string &prompt, char &command);
 bool getMenuItemId(const std::string &prompt, char &command);
 bool getTileCharacter(const std::string &prompt, char &command);
@@ -82,6 +83,7 @@ void waitForContinueKey(int line_number);
 bool checkForNonBlockingKeyPress(int microseconds);
 void getDefaultPlayerName(char *buffer);
 bool checkFilePermissions();
+void loadKeyMap();
 
 #ifndef _WIN32
 // call functions which expand tilde before calling open/fopen

@@ -5,6 +5,7 @@
 
 // clang-format off
 #include "headers.h"
+#include <map>
 
 namespace config {
     // Data files used by Umoria
@@ -21,8 +22,13 @@ namespace config {
         const std::string death_tomb = "data/death_tomb.txt";
         const std::string death_royal = "data/death_royal.txt";
         const std::string scores = "scores.dat";
+        const std::string key_map = "keymap.dat";
         std::string save_game = "game.sav";
     } // namespace files
+
+    namespace input {
+        std::map<char, char> key_map;
+    }
 
     // Game options as set on startup and with `=` set options command -CJS-
     namespace options {

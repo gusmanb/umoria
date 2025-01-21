@@ -8,6 +8,10 @@
 #include <cstdlib>
 #include "headers.h"
 #include "curses.h"
+#include <fstream>
+#include <sstream>
+#include <iomanip>
+#include "config.h"
 
 static bool curses_on = false;
 
@@ -373,6 +377,14 @@ char getKeyInput() {
     }
 }
 
+char mapKeyInput(char key) {
+    auto it = config::input::key_map.find(key);
+    if (it != config::input::key_map.end()) {
+        return it->second;
+    }
+    return key;
+}
+
 // Prompts (optional) and returns ord value of input char
 // Function returns false if <ESCAPE> is input
 bool getCommand(const std::string &prompt, char &command) {
@@ -668,4 +680,24 @@ bool checkFilePermissions() {
 #endif
 
     return true;
+}
+
+void loadKeyMap() {
+    std::ifstream keyMapFile(config::files::key_map);
+    if (!keyMapFile.is_open()) {
+        return;
+    }
+
+    std::string line;
+    while (std::getline(keyMapFile, line)) {
+        std::istringstream iss(line);
+        std::string fromHex, toHex;
+        if (!(iss >> fromHex >> toHex)) {
+            continue;
+        }
+
+        char fromChar = static_cast<char>(std::stoi(fromHex, nullptr, 16));
+        char toChar = static_cast<char>(std::stoi(toHex, nullptr, 16));
+        config::input::key_map[fromChar] = toChar;
+    }
 }

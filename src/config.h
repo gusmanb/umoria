@@ -20,7 +20,12 @@ namespace config {
         extern const std::string death_tomb;
         extern const std::string death_royal;
         extern const std::string scores;
+        extern const std::string key_map;
         extern std::string save_game;
+    }
+
+    namespace input {
+        extern std::map<char, char> key_map;
     }
 
     namespace options {

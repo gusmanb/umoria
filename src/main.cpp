@@ -32,6 +32,8 @@ int main(int argc, char *argv[]) {
     bool new_game = false;
     bool roguelike_keys = false;
 
+    loadKeyMap();
+
     // call this routine to grab a file pointer to the high score file
     // and prepare things to relinquish setuid privileges
     if (!initializeScoreFile()) {
